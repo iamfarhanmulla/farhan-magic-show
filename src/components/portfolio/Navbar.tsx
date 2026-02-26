@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -11,6 +13,7 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -44,6 +47,15 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            <button
+              onClick={toggle}
+              aria-label="Toggle theme"
+              className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </li>
         </ul>
 
         {/* Mobile toggle */}
@@ -81,6 +93,15 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+            <li>
+              <button
+                onClick={toggle}
+                aria-label="Toggle theme"
+                className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
+              >
+                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+            </li>
           </ul>
         </motion.div>
       )}
