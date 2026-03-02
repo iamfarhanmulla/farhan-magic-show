@@ -7,11 +7,15 @@ import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
 import SplashScreen from "@/components/portfolio/SplashScreen";
+
 const Index = () => {
-    const [splashDone, setSplashDone] = useState(false);
-    const handleSplashComplete = useCallback(() => setSplashDone(true), []);
-    return (<>
-      {!splashDone && <SplashScreen onComplete={handleSplashComplete}/>}
+  const [splashDone, setSplashDone] = useState(false);
+
+  const handleSplashComplete = useCallback(() => setSplashDone(true), []);
+
+  return (
+    <>
+      {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
       <div className={`min-h-screen bg-background ${splashDone ? "" : "invisible"}`}>
         <Navbar />
         <HeroSection />
@@ -21,6 +25,8 @@ const Index = () => {
         <ContactSection />
         <Footer />
       </div>
-    </>);
+    </>
+  );
 };
+
 export default Index;

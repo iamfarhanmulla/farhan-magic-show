@@ -1,36 +1,23 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Instagram, Linkedin, Mail } from "lucide-react";
+
 const AboutSection = () => {
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
-    const socialLinks = [
-        {
-            name: "Instagram",
-            href: "https://instagram.com/your-username",
-            icon: Instagram
-        },
-        {
-            name: "LinkedIn",
-            href: "https://linkedin.com/in/your-username",
-            icon: Linkedin
-        },
-        {
-            name: "Gmail",
-            href: "mailto:farhan@example.com",
-            icon: Mail
-        }
-    ];
-
-    return (<section id="about" className="section-padding" ref={ref}>
+  return (
+    <section id="about" className="section-padding" ref={ref}>
       <div className="max-w-4xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-2xl md:text-3xl font-bold mb-2 flex items-center gap-3">
             <span className="text-primary font-mono text-lg">01.</span>
             About Me
-            <span className="hidden sm:block h-px bg-border flex-1 ml-4"/>
+            <span className="hidden sm:block h-px bg-border flex-1 ml-4" />
           </h2>
 
           <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
@@ -51,18 +38,10 @@ const AboutSection = () => {
               developer communities, or diving deeper into system design and software architecture patterns.
             </p>
           </div>
-
-          <div className="mt-8 flex items-center gap-4">
-            {socialLinks.map((link) => {
-                const Icon = link.icon;
-                const isEmail = link.href.startsWith("mailto:");
-                return (<a key={link.name} href={link.href} target={isEmail ? undefined : "_blank"} rel={isEmail ? undefined : "noreferrer"} aria-label={link.name} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 text-primary hover:bg-primary/10 transition-colors">
-                    <Icon size={20}/>
-                  </a>);
-            })}
-          </div>
         </motion.div>
       </div>
-    </section>);
+    </section>
+  );
 };
+
 export default AboutSection;
