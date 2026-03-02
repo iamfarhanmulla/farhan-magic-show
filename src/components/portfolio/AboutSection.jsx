@@ -1,10 +1,20 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 
 const AboutSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const socialLinks = [
+    // { name: "Instagram", href: "https://instagram.com/iamfarhanmulla", icon: Instagram },
+    { name: "LinkedIn", href: "https://linkedin.com/in/farhan-mulla", icon: Linkedin },
+    {
+      name: "Gmail",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=ai.farhan@outlook.com",
+      icon: Mail,
+    },
+  ];
 
   return (
     <section id="about" className="section-padding" ref={ref}>
@@ -37,6 +47,24 @@ const AboutSection = () => {
               When I'm not coding, you'll find me exploring new technologies, contributing to
               developer communities, or diving deeper into system design and software architecture patterns.
             </p>
+          </div>
+
+          <div className="mt-8 flex items-center gap-4">
+            {socialLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={link.name}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 text-primary hover:bg-primary/10 transition-colors"
+                >
+                  <Icon size={20} />
+                </a>
+              );
+            })}
           </div>
         </motion.div>
       </div>
