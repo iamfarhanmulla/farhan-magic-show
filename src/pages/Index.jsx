@@ -18,7 +18,7 @@ const Index = () => {
       {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
       <div className={`min-h-screen bg-background ${splashDone ? "" : "invisible"}`}>
         <Navbar />
-        <HeroSection />
+        <HeroSection splashDone={splashDone} />
         <AboutSection />
         <SkillsSection />
         <ExperienceSection />

@@ -90,7 +90,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-mono;
   }
 
   html {
@@ -109,5 +109,56 @@
 
   .section-padding {
     @apply py-20 md:py-28 px-6 md:px-12 lg:px-20;
+  }
+
+  .star-drift-layer {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+      radial-gradient(circle at 75% 40%, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+      radial-gradient(circle at 55% 75%, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 520px 520px, 660px 660px, 820px 820px;
+    animation: star-drift 120s linear infinite;
+  }
+
+  .star-drift-layer-reverse {
+    background-image:
+      radial-gradient(circle at 10% 60%, rgba(155, 172, 255, 0.2) 1px, transparent 1px),
+      radial-gradient(circle at 70% 20%, rgba(185, 170, 255, 0.16) 1px, transparent 1px);
+    background-size: 700px 700px, 900px 900px;
+    animation: star-drift-reverse 170s linear infinite;
+  }
+
+  .star-twinkle {
+    animation-name: star-twinkle;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes star-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-120px, -180px, 0);
+  }
+}
+
+@keyframes star-drift-reverse {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(90px, 140px, 0);
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
   }
 }
